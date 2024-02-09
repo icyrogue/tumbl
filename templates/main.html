@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <title> Tumbl </title>
+  <script src="https://unpkg.com/htmx.org@1.9.10"
+    integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1> Tumbl </h1>
+  <form hx-post="/pull" hx-target="#files" hx-swap>
+    <input name="link" value="{{ .Link}}">
+    <button>Submit</button>
+  </form>
+
+  <div id="files" hx-post="/pull" hx-swap hx-trigger="load">
+    <p> Updating... </p>
+  </div>
+  <div class="logs" hx-get="/logs" hx-trigger="every 5s" hx-swap="beforeend"></div>
+
+</body>
+<style>
+  .logs {
+    color: white;
+    background-color: #757575;
+    height: 65%;
+    overflow-y: auto;
+    padding: 8px;
+    margin-top: 1rem;
+  }
+</style>
+
+</html>

@@ -1,0 +1,6 @@
+{{ range . }}
+{{ $f := html . }}
+<button hx-post="/exec/{{ $f}}" hx-swap="none">
+  {{ .}}
+</button>
+{{end}}
